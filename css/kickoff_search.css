@@ -1,0 +1,28 @@
+.search_conditions{
+    height: 48px;
+    background: #F1F1F1;
+}
+
+.search_result{
+    background: cornsilk;
+    position: relative;
+    width: 1240px;
+    height: 1000px;
+    margin: 64px auto auto auto;
+}
+
+.search_list{
+    position: relative;
+    background: azure;
+    width: 610px;
+    height: 200px;
+}
+
+.search_item{
+    display: inline-block;
+    height: 320px;
+    width: 295px;
+    margin: 0 5 0 0px;
+    background: yellow;
+
+}
