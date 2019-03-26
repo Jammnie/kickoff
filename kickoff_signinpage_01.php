@@ -28,8 +28,8 @@
             <div class="User">
                 <ul>
                     <li><a>회원가입</a></a></li>
-                    <li><a href= "kickoff_signinpage_01.html">회원가입</a></a></li>
-                    <li><a href= "kickoff_loginpage_01.html">로그인</a></a></li>
+                    <li><a href= "kickoff_signinpage_01.php">회원가입</a></a></li>
+                    <li><a href= "kickoff_loginpage_01.php">로그인</a></a></li>
                 </ul>
             </div>
 
