@@ -10,13 +10,13 @@
                 $status = $row['userid']."님 로그인되었습니다.";
                 $_SESSION['is_logged'] = 'YES';
                 $_SESSION['userid'] = $row['userid'];
-                header('Location:http://kickoff_loginpage_03.php');
+                header('Location:kickoff_loginpage_03.php');
                 break;
             } else {
                 $status = $row['userid']."님 비밀번호를 확인해주세요.";
                 $_SESSION['is_logged'] = 'NO';
                 $_SESSION['userid'] = '';
-                header('Location:http://kickoff_loginpage_03.php');
+                header('Location:kickoff_loginpage_03.php');
                 break;
             }
         }
