@@ -4,23 +4,24 @@
     $result = mysqli_query($conn, $sql);
     
     $status = "";
-    $repeatVar = 0;
     while($row = mysqli_fetch_array($result)) {
         if($_POST['userID'] == $row['userid']){
             if($_POST['userPW'] == $row['userpw']){
                 $status = $row['userid']."님 로그인되었습니다.";
+                $_SESSION['is_logged'] = 'YES';
+                $_SESSION['userid'] = $row['userid'];
+                header('Location:http://kickoff_loginpage_03.php');
+                break;
             } else {
                 $status = $row['userid']."님 비밀번호를 확인해주세요.";
+                $_SESSION['is_logged'] = 'NO';
+                $_SESSION['userid'] = '';
+                header('Location:http://kickoff_loginpage_03.php');
                 break;
             }
-        } else {
-            $status = "아이디를 확인해주세요.";
-            break;
         }
-
-        $repeatVar ++;
+            $status = "아이디를 확인해주세요.";
     }
-    // 페치 어레이
 ?>
 <!DOCTYPE html>
 <html lang="en">
