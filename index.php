@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Bitnami: Open Source. Simplified</title>
+<title>Kickoff</title>
 <link href="css\kickoff_css.css" rel="stylesheet" type="text/css">
 <link href="css\kickoff_landing.css" rel="stylesheet" type="text/css">
 <script src="js/prefixfree.min.js"></script>
@@ -18,10 +18,10 @@
             <ul>
                 <li><img ></li>
                 <li><a href="index.php">KICKOFF</a></li>
-                <li><a href="kickoff_searchpage_01.html">구장예약</a></li>
-                <li><a href="kickoff_matchpage_01.html">매치찾기</a></li>
-                <li><a href="kickoff_trainingpage_01.html">트레이닝</a></li>
-                <li><a href="kickoff_myclubpage_01.html">My Club</a></li>
+                <li><a href="kickoff_searchpage_01.php">구장예약</a></li>
+                <li><a href="kickoff_matchpage_01.php">매치찾기</a></li>
+                <li><a href="kickoff_trainingpage_01.php">트레이닝</a></li>
+                <li><a href="kickoff_myclubpage_01.php">My Club</a></li>
             </ul>
         </nav>
 
