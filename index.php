@@ -1,6 +1,7 @@
 <?php
+session_start();
  $conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
-
+ $user_id = $_SESSION['userid'];
 ?>
 <!DOCTYPE html PUBLIC>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,7 +28,7 @@
 
         <div class="User">
             <ul>
-                <li>회원가입</li>
+                <li><?=$user_id?>님 안녕하세요</li>
                 <li><a href="kickoff_signinpage_01.php">회원가입</a></li>
                 <li><a href="kickoff_loginpage_01.php">로그인</a></li>
             </ul>
