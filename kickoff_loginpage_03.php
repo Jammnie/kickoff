@@ -20,8 +20,11 @@
     <title>로그인완료</title>
 </head>
 <body>
+    <p></p>
+    <p><a href="index.php">메인화면으로</a></p>
     <?php
         echo $message;
     ?>
+    
 </body>
 </html>

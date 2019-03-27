@@ -1,4 +1,5 @@
 <?php
+session_start();
     $conn = mysqli_connect('localhost','root','dlwoals12','kickoff');
     $sql = "SELECT * FROM user_infomations";
     $result = mysqli_query($conn, $sql);
