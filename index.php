@@ -123,9 +123,9 @@ session_start();
                         <P>가까운 구장의 평균 점수는 4.5개입니다.</P>
                     </div>
                     <div class="SearchContent">
-                        <section class="CourtView">
+                        <section class="CourtView" >
                             <img class="CourtImage">
-                            <h2>풋살장이름</h2>
+                            <h2><a href="kickoff_groundIntro_01.php">풋살장이름</a></h2>
                             <p>풋살장주소<br>상세주소</p>
                             <div>
                                 <img class="starScore" src="resources/images/LikeStar_Checked.png">

@@ -19,6 +19,7 @@
 .mainsearchTitle{
     font-size: 20px;
     margin-top: 21px;
+    text-align: center;
 }
 
 .SearchType{
@@ -115,7 +116,6 @@
 
 .SearchContent{
     display: flex;
-    background: lightcyan;
 }
 
 .CourtView{
