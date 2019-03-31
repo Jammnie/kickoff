@@ -1,3 +1,11 @@
+<?php 
+session_start();
+if($_SESSION['is_logged']=='YES'){
+    $_SESSION['is_logged'] = 'NO';
+    $_SESSION['userid'] = '';
+    header('Location:index.php');
+}
+?>
 <! doctype html>
 <html>
     <head>

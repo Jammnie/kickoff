@@ -2,6 +2,12 @@
 session_start();
  $conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
  $user_id = $_SESSION['userid'];
+ $login_stat = '';
+ if($_SESSION['is_logged'] == 'YES'){
+     $login_stat = '로그아웃';
+ } else { 
+    $login_stat = '로그인';
+ }
 ?>
 <!DOCTYPE html PUBLIC>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +36,7 @@ session_start();
             <ul>
                 <li><?=$user_id?>님 안녕하세요</li>
                 <li><a href="kickoff_signinpage_01.php">회원가입</a></li>
-                <li><a href="kickoff_loginpage_01.php">로그인</a></li>
+                <li name="btn_login"><a href="kickoff_loginpage_01.php"><?=$login_stat?></a></li>
             </ul>
         </div>
     </header>
@@ -86,7 +92,7 @@ session_start();
                         </select>
                     </div>
                     <div class="Search">
-                        <input type="submit" class="Btn_Search">검색</button>
+                        <input type="submit" class="Btn_Search" value="검색"></button>
                     </div>
                 </div>
               </form>

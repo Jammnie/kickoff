@@ -73,6 +73,9 @@
 
 .SearchInput{
     position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     color: #707070;
     font-size: 26px;
     font-weight: bold;
@@ -116,6 +119,7 @@
 
 .SearchContent{
     display: flex;
+    background: lightcyan;
 }
 
 .CourtView{
