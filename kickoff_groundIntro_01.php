@@ -80,7 +80,10 @@ if($_SESSION['is_logged'] == 'YES'){
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quas amet laudantium inventore, perspiciatis fuga nobis provident voluptates temporibus, quo, rem eveniet. Sunt ab, aliquid et impedit vitae blanditiis dolor? </p>
             </div>
         <div>
-
+            <div Class="reservation">
+                <h2>예약하기</h2>
+                
+            </div>
 
     </div>
 </body>

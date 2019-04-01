@@ -2,3 +2,12 @@
     position: relative;
     width: 1240px;
 }
+
+.reservation{
+    position: fixed;
+    top: 500px;
+    right: 20px;
+    width: 400;
+    height: 570;
+    background-color:lightgray;
+}
