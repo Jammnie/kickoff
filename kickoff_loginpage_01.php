@@ -12,6 +12,7 @@ if($_SESSION['is_logged']=='YES'){
         <meta charset="utf-8">
         <title>Kick off 로그인페이지</title>
         <link href= "css\kickoff_css.css" rel="stylesheet" type="text/css">
+        <link href= "css\kickoff_login.css" rel="stylesheet" type="text/css">
         <script src="/js/prefixfree.min.js"></script>
     </head>
     <body>
@@ -36,11 +37,14 @@ if($_SESSION['is_logged']=='YES'){
             </div>
           </header>
           <div class="wrapper">
-            <div>
+            <div class="login">
+                <h1>Kickoff 로그인</h1>
+                <hr>
                 <form action="kickoff_loginpage_02.php" method="POST">
-                    <p><input type="text" name="userID"></p>
-                    <p><input type="password" name="userPW"></p>
-                    <input type="submit">
+                    <p><input class="login_inputset" type="text" name="userID" placeholder="아이디"></p>
+                    <p><input class="login_inputset" type="password" name="userPW" placeholder="패스워드"></p>
+                    <input type="checkbox" value="" >아이디 저장 </br>
+                    <input class="login_btn" type="submit" value="로그인">
                 </form>
                 
             </div>

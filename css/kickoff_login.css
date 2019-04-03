@@ -1,0 +1,38 @@
+.login{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 138px;
+    left: 0;
+    width: 820px;
+}
+
+.login_inputset{
+    width: 820px;
+    height: 52px;
+    margin-top: 16px;
+    font-size: 18px;
+    font-family: 'NanumGothic';
+    border-radius: 5px;
+}
+
+.login_btn{
+    width: 820px;
+    height: 64px;
+    background-color: #195384;
+    color : #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid #707070;
+}
+
+.login_btn:hover{
+    background-color:#1D69AA;
+}
+
+.hr{
+    height: 2px;
+    color: #707070;
+    margin-top: 20px;
+}
