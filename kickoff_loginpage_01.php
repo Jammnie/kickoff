@@ -43,10 +43,13 @@ if($_SESSION['is_logged']=='YES'){
                 <form action="kickoff_loginpage_02.php" method="POST">
                     <p><input class="login_inputset" type="text" name="userID" placeholder="아이디"></p>
                     <p><input class="login_inputset" type="password" name="userPW" placeholder="패스워드"></p>
-                    <input type="checkbox" value="" >아이디 저장 </br>
+                    <input id="id_save" type="checkbox" value="" >아이디 저장 
+                    <a id="find_pw" href="#">비밀번호 찾기</a>
+                    <br>
                     <input class="login_btn" type="submit" value="로그인">
                 </form>
-                
+                <hr>
+                <button class="signup_btn" value="회원가입"><a>회원가입</a></button>
             </div>
           </div>
     </body>

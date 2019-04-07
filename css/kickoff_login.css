@@ -31,8 +31,35 @@
     background-color:#1D69AA;
 }
 
-.hr{
-    height: 2px;
-    color: #707070;
+.signup_btn{
     margin-top: 20px;
+    width:820px;
+    height: 64px;
+    color:#195384;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 2px solid #195384;
+}
+
+.signup_btn:hover{
+    background-color:#1D69AA;
+}
+
+hr{
+    color: #707070;
+    border: 2px solid #707070;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#id_save{
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#find_pw{
+    position: relative;
+    right: 0px;
+    font-size:14px;
 }
