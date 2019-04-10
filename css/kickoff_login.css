@@ -8,9 +8,9 @@
 }
 
 .login_inputset{
+    margin-top: 16px;
     width: 820px;
     height: 52px;
-    margin-top: 16px;
     font-size: 18px;
     font-family: 'NanumGothic';
     border-radius: 5px;
@@ -32,7 +32,6 @@
 }
 
 .signup_btn{
-    margin-top: 20px;
     width:820px;
     height: 64px;
     color:#195384;

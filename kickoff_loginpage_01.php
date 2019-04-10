@@ -6,6 +6,11 @@ if($_SESSION['is_logged']=='YES'){
     header('Location:index.php');
 }
 ?>
+<script>
+    function signup_grounduser() {
+        header('Location:kickoff_signinpage_02');
+    }
+</script>
 <! doctype html>
 <html>
     <head>
@@ -50,6 +55,7 @@ if($_SESSION['is_logged']=='YES'){
                 </form>
                 <hr>
                 <button class="signup_btn" value="회원가입"><a>회원가입</a></button>
+                <button clss="signup_grounduser_btn" value="구장주 회원가입" onclick="signup_grounduser()">구장주 회원가입</button> 
             </div>
           </div>
     </body>

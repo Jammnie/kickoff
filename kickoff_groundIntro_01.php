@@ -6,6 +6,12 @@ if($_SESSION['is_logged'] == 'YES'){
 } else { 
    $login_stat = '로그인';
 }
+
+$conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
+$sql = "SELECT*FROM ground_infomations WHERE groundindex = 1";
+$result = mysqli_query($conn,$sql);
+//$row = mysqli_query($conn,$sql);
+$row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +49,9 @@ if($_SESSION['is_logged'] == 'YES'){
     </header>
     <div Class="wrapper">
         <div class="bpdy">
-            <h1>풋살장 이름</h1>
-            <p>풋살장 주소는 여기구요 지리구요<p>
-            <p>여기에 평점이 오지구요 </p>
+            <h1><?=$row['ground_name']?></h1>
+            <p><?=$row['ground_adress']?><p>
+            <p><?=$row['ground_rate']?> </p>
         </div>
         
         <div>
@@ -54,23 +60,22 @@ if($_SESSION['is_logged'] == 'YES'){
             <input type="date">
             </form>
             
-            <h4>1구장</h5>
+            <h4>1구장</h4>
             <p><button >09:00</button><button>10:00</button><button>11:00</button><button>12:00</button><button>13:00</button><button>14:00</button><button>15:00</button><button>16:00</button><button>17:00</button><button>18:00</button></p>
             <p><button>19:00</button><button>20:00</button><button>21:00</button><button>22:00</button><button>23:00</button><button>24:00</button><button>01:00</button><button>02:00</button><button>03:00</button><button>04:00</button></p>
 
-            <h5>2구장</h5>
+            <h4>2구장</h4>
             <p><button>09:00</button><button>10:00</button><button>11:00</button><button>12:00</button><button>13:00</button><button>14:00</button><button>15:00</button><button>16:00</button><button>17:00</button><button>18:00</button></p>
             <p><button>19:00</button><button>20:00</button><button>21:00</button><button>22:00</button><button>23:00</button><button>24:00</button><button>01:00</button><button>02:00</button><button>03:00</button><button>04:00</button></p>
 
-            <h5>3구장</h5>
+            <h4>3구장</h4>
             <p><button>09:00</button><button>10:00</button><button>11:00</button><button>12:00</button><button>13:00</button><button>14:00</button><button>15:00</button><button>16:00</button><button>17:00</button><button>18:00</button></p>
             <p><button>19:00</button><button>20:00</button><button>21:00</button><button>22:00</button><button>23:00</button><button>24:00</button><button>01:00</button><button>02:00</button><button>03:00</button><button>04:00</button></p>
 
         </div>
         <h4>구장 소개</h4>
         <p>
-        최신 설비를 가진 대기실 대기시간중 최적의 휴식을 위한 휴식공간
-        설비. 에어컨 완비. 벤치 설치. 
+        <?=$row['ground_intro']?>
         </p>
         <div>
             <h4>이용후기</h4>
