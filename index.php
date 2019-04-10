@@ -1,6 +1,6 @@
 <?php
+$conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
 session_start();
- $conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
  $user_id = $_SESSION['userid'];
  $login_stat = '';
  if($_SESSION['is_logged'] == 'YES'){
@@ -8,6 +8,12 @@ session_start();
  } else { 
     $login_stat = '로그인';
  }
+
+ $groundNum = 1;
+ 
+ $sql = "SELECT*FROM ground_infomations WHERE groundindex = $groundNum";
+ $result = mysqli_query($conn,$sql);
+ $row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html PUBLIC>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -131,8 +137,8 @@ session_start();
                     <div class="SearchContent">
                         <section class="CourtView" >
                             <img class="CourtImage">
-                            <h2><a href="kickoff_groundIntro_01.php">풋살장이름</a></h2>
-                            <p>풋살장주소<br>상세주소</p>
+                            <h2><a href="kickoff_groundIntro_01.php?groundid=<?=$groundNum?>"><?=$row['ground_name']?></a></h2>
+                            <p><?=$row['ground_adress']?></p>
                             <div>
                                 <img class="starScore" src="resources/images/LikeStar_Checked.png">
                                 <img class="starScore" src="resources/images/LikeStar_Checked.png">

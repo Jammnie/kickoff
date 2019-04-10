@@ -6,9 +6,9 @@ if($_SESSION['is_logged'] == 'YES'){
 } else { 
    $login_stat = '로그인';
 }
-
+$num = $_GET['groundid'];
 $conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
-$sql = "SELECT*FROM ground_infomations WHERE groundindex = 1";
+$sql = "SELECT*FROM ground_infomations WHERE groundindex = $num";
 $result = mysqli_query($conn,$sql);
 //$row = mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result);
