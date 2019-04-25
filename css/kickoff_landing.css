@@ -119,7 +119,6 @@
 
 .SearchContent{
     display: flex;
-    background: lightcyan;
 }
 
 .CourtView{
@@ -135,18 +134,14 @@
     border-radius: 3px;
     height: 200px;
     margin: 0px;
+    background: #5E5E5E;
 }
-
 
 /* 트레이닝검색 */
 .TrainingSearch{
     margin: 40px 0 0 0;
     box-sizing: content-box;
     height : 420px;
-}
-.SearchContent_t{
-    display: flex;
-    background: lightcyan;
 }
 .TrainingView{
     display: inline-block;
@@ -155,7 +150,6 @@
     height: 320px;
     margin: 0 0 0 20px;
     border: 0px solid transparent;
-    background-color: lightcoral;
 }
 
 .signin{

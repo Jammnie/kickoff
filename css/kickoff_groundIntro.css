@@ -1,6 +1,5 @@
-.wrapper{
+.warpper{
     position: relative;
-    width: 1240px;
 }
 
 .reservation{
@@ -10,4 +9,15 @@
     width: 400;
     height: 570;
     background-color:lightgray;
+}
+
+.reseve_inputset{
+    width: 169px;
+    height: 36px;
+    border: 1px solid #ABABAB;
+    border-radius: 5px;
+}
+.intro_image{
+    background : lightblue;
+    height: 436px;
 }

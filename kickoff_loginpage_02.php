@@ -11,6 +11,7 @@ session_start();
                 $status = $row['userid']."님 로그인되었습니다.";
                 $_SESSION['is_logged'] = 'YES';
                 $_SESSION['userid'] = $row['userid'];
+                $_SESSION['userindex'] = $row['userindex'];
                 header('Location:kickoff_loginpage_03.php');
                 break;
             } else {

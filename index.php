@@ -11,7 +11,7 @@ session_start();
 
  $groundNum = 1;
  
- $sql = "SELECT*FROM ground_infomations WHERE groundindex = $groundNum";
+ $sql = "SELECT*FROM ground_infomations WHERE ground_index = $groundNum";
  $result = mysqli_query($conn,$sql);
  $row = mysqli_fetch_array($result);
 ?>
@@ -40,7 +40,7 @@ session_start();
 
         <div class="User">
             <ul>
-                <li><?=$user_id?>님 안녕하세요</li>
+                <li class="login_user" style="{color: white;}"><?=$user_id?>님 안녕하세요</li>
                 <li><a href="kickoff_signinpage_01.php">회원가입</a></li>
                 <li name="btn_login"><a href="kickoff_loginpage_01.php"><?=$login_stat?></a></li>
             </ul>
@@ -136,8 +136,9 @@ session_start();
                     </div>
                     <div class="SearchContent">
                         <section class="CourtView" >
-                            <img class="CourtImage">
-                            <h2><a href="kickoff_groundIntro_01.php?groundid=<?=$groundNum?>"><?=$row['ground_name']?></a></h2>
+                            <a href="kickoff_groundIntro_01.php?groundid=<?=$groundNum?>">
+                            <div class="CourtImage"></div>
+                            <h2><?=$row['ground_name']?></h2>
                             <p><?=$row['ground_adress']?></p>
                             <div>
                                 <img class="starScore" src="resources/images/LikeStar_Checked.png">
@@ -146,9 +147,10 @@ session_start();
                                 <img class="starScore" src="resources/images/LikeStar_Checked.png">
                                 <img class="starScore" src="resources/images/LikeStar_Unchecked.png">
                             </div>
+                            </a>
                         </section>
                         <section class="CourtView">
-                            <img class="CourtImage">
+                            <div class="CourtImage"></div>
                             <h2>풋살장이름</h2>
                             <p>풋살장주소<br>상세주소</p>
                             <div>
@@ -160,7 +162,7 @@ session_start();
                             </div>
                         </section>
                         <section class="CourtView">
-                            <img class="CourtImage">
+                        <div class="CourtImage"></div>
                             <h2>풋살장이름</h2>
                             <p>풋살장주소<br>상세주소</p>
                             <div>
@@ -172,7 +174,7 @@ session_start();
                             </div>
                         </section>
                         <section class="CourtView">
-                            <img class="CourtImage">
+                        <div class="CourtImage"></div>
                             <h2>더보기</h2>
                             <p>더보기<br>상세주소</p>
                             <div>
