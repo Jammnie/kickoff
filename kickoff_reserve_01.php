@@ -9,18 +9,14 @@
     } else { 
        $login_stat = '로그인';
     }
-
-    // $sql = "SELECT*FROM ground_index_reservations WHERE reservation_index = 1";
-    // $result = mysqli_query($conn, $sql);
-    // $row = mysqli_fetch_array($result);
-
-    // var_dump($row);
+    //int 형으로 형변환
     $_POST['ground_num']=(int)$_POST['ground_num'];
     $_POST['reserve_start'] = (int)$_POST['reserve_start'];
     $_POST['reserve_end'] = (int)$_POST['reserve_end'];
     var_dump($_POST);
     echo "<br><h2>".$userindex."<br>".$user_id."</h2>";
 
+    // 화면에 값을 출력하여 알아보기 위해
     $ground_num = $_POST['ground_num'];
     $reservation_date = $_POST['reserve_date'];
     $reservation_time = $_POST['reserve_start'];
@@ -30,9 +26,8 @@
     $reservation_end."<br></h2>";
 
     while($reservation_time <= $reservation_end){
-        $sql = "INSERT INTO ground_index_reservations(ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created) VALUES($ground_num, '$reservation_date', $reservation_time, 1, $userindex, now())";
-        // $sql = "INSERT INTO ground_index_reservations (ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created)
-        // VALUES ($ground_num_1, $reservation_date, $rese, 1, $userindex, NOW())";
+        $sql = "INSERT INTO ground_index_reservations(ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created)
+        VALUES($ground_num, '$reservation_date', $reservation_time, 1, $userindex, now())";
         $result = mysqli_query($conn, $sql);
 
         $reservation_time++;

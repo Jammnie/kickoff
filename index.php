@@ -137,16 +137,16 @@ session_start();
                     <div class="SearchContent">
                         <section class="CourtView" >
                             <a href="kickoff_groundIntro_01.php?groundid=<?=$groundNum?>">
-                            <div class="CourtImage"></div>
-                            <h2><?=$row['ground_name']?></h2>
-                            <p><?=$row['ground_adress']?></p>
-                            <div>
-                                <img class="starScore" src="resources/images/LikeStar_Checked.png">
-                                <img class="starScore" src="resources/images/LikeStar_Checked.png">
-                                <img class="starScore" src="resources/images/LikeStar_Checked.png">
-                                <img class="starScore" src="resources/images/LikeStar_Checked.png">
-                                <img class="starScore" src="resources/images/LikeStar_Unchecked.png">
-                            </div>
+                                <div class="CourtImage"></div>
+                                <h2><?=$row['ground_name']?></h2>
+                                <p><?=$row['ground_adress']?></p>
+                                <div>
+                                    <img class="starScore" src="resources/images/LikeStar_Checked.png">
+                                    <img class="starScore" src="resources/images/LikeStar_Checked.png">
+                                    <img class="starScore" src="resources/images/LikeStar_Checked.png">
+                                    <img class="starScore" src="resources/images/LikeStar_Checked.png">
+                                    <img class="starScore" src="resources/images/LikeStar_Unchecked.png">
+                                </div>
                             </a>
                         </section>
                         <section class="CourtView">
