@@ -1,6 +1,6 @@
 <?php
 session_start();
-$login_stat = '';
+
 if($_SESSION['is_logged'] == 'YES'){
     $login_stat = '로그아웃';
     $user_id = $_SESSION['userid'];
@@ -15,23 +15,8 @@ $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result);
 
 
-//예약정보를 알아오는 부분
-// 날짜를 받아온 로우들 중에서
-if($_POST){
-    $reserve_data = $_POST['reserve_date'];
-    $sql_reserve = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$reserve_data'";
-    $result_reserve = mysqli_query($conn,$sql_reserve);
-    while($row_reserve = mysqli_fetch_array($result_reserve)){
-        if($row_reserve['ground_reservation_stat'] = "1"){
-            $reserveGroundNum = $row_reserve['ground_num'];
-            $reserveTime = $row_reserve['ground_reservation_time'];
-            echo ("<script language=javascript> reservationCheck($reserveGroundNum,$reserveTime); </stcipt>");
-        }
-    }
-}
+
 ?>
-<script>
-</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,9 +65,14 @@ if($_POST){
             <div>
                 <h4>이용시간</h4>
                 <form action="kickoff_groundIntro_01.php?groundid=<?=$num?>" method="POST">
-                    <input type="date" name="reserve_date">
+                    <input type="date" name="reserve_date" id="reservated_date" value="2019-05-30">
                     <input type="submit">
                 </form>
+                <script>
+                    //document.getElementById('reservated_date').value = new Date().toISOString().slice(0, 10);
+                    var reserved_date1 = document.getElementById('reservated_date').value;
+                    document.write(reserved_date1);
+                </script>
                 
                 <h4>1구장</h4>
                 <p><button id="S10">00:00</button><button id="S11">01:00</button><button id="S12">02:00</button><button id="S13">03:00</button><button>04:00</button><button>05:00</button><button>06:00</button><button>07:00</button></p>
@@ -102,17 +92,41 @@ if($_POST){
                 <p>구장 예약 DB 정보</p>
                 <script>
                     function reservationCheck(groundNum,time){
-                        document.getElementById("S"+"groundNum"+"time").style.color = "red";
+                        document.getElementById("S"+groundNum+time).style.color = "red";
                     }
-                    document.getElementById("S10").style.backgroundColor = "gray";
-                //     document.write("<br>"+"S"+"<?=$row_reserve['ground_num'].$row_reserve['ground_reservation_time']?>");
-
-                //     while(<? echo $row_reserve = mysqli_fetch_array($result_reserve)?>){
-                //         if(<? echo $row_reserve['ground_reservation_stat'];?> == "1"){
-                //             document.getElementById("S"+"<?=$row_reserve['ground_num'].$row_reserve['ground_reservation_time']?>").style.color = "red";
-                //         }
-                //    }
                 </script>
+                <?php
+                //예약정보를 알아오는 부분
+                // 날짜를 받아온 로우들 중에서
+                if($_POST){
+                    $reserve_data = $_POST['reserve_date'];
+                    $sql_reserve = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$reserve_data'";
+                    $result_reserve = mysqli_query($conn, $sql_reserve);
+                    $day_reserve_ground = array();
+                    $day_reserve_time = array();
+                    while($row_reserve = mysqli_fetch_array($result_reserve)) {
+                        if($row_reserve['ground_reservation_stat'] == "1"){
+                            $reserveGroundNum = $row_reserve['ground_num'];
+                            $reserveTime = $row_reserve['ground_reservation_time'];
+                            echo ("<script type='text/javascript'> reservationCheck(".$reserveGroundNum.",".$reserveTime.")</script>");
+                        }
+                    }
+                } else {
+                    $temp_reserve_data = "<script>document.write(reserved_date1);</script>";
+                    echo $temp_reserve_data;
+                    $sql_reserve = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$temp_reserve_data'";
+                    $result_reserve = mysqli_query($conn, $sql_reserve);
+                    $day_reserve_ground = array();
+                    $day_reserve_time = array();
+                    while($row_reserve = mysqli_fetch_array($result_reserve)) {
+                        if($row_reserve['ground_reservation_stat'] == "1"){
+                            $reserveGroundNum = $row_reserve['ground_num'];
+                            $reserveTime = $row_reserve['ground_reservation_time'];
+                            echo ("<script type='text/javascript'> reservationCheck(".$reserveGroundNum.",".$reserveTime.")</script>");
+                        }
+                    }
+                }
+                ?>
             </div>
             <h4>구장 소개</h4>
             <p>
@@ -129,9 +143,13 @@ if($_POST){
                 <div>
                     <h3>
                         <?php
-                            var_dump($row_reserve);
                             echo "<br>";
                             var_dump($_POST);
+                            while($row_reserve = mysqli_fetch_array($result_reserve)) {
+                                var_dump($row_reserve);
+                            }
+                            echo ($reserveTime);
+                            echo ($reserveGroundNum);
                         ?>
                         <script>
                             document.write("<br>"+"S"+"<?=$row_reserve['ground_num'].$row_reserve['ground_reservation_time']?>");
@@ -139,7 +157,7 @@ if($_POST){
                     </h3>
                 </div>
             <div>
-                <div Class="reservation">
+                <div class="reservation">
                     <h2>예약하기</h2>
                     <div>
                         <form action="kickoff_reserve_01.php" method="POST">
@@ -151,7 +169,7 @@ if($_POST){
                         </select></p>
 
                         <p>이용날짜<p>
-                        <p><input type="date" class="reseve_inputset" name="reserve_date"></p>
+                        <p><input type="date" class="reseve_inputset" name="reserve_date" id="reserve_date"></p>
 
                         <p>이용시간</p>
                         <p>
@@ -171,8 +189,9 @@ if($_POST){
                                 <option value="4">04:59</option>
                             </select>
                         </p>
-                        <p><input type="submit" value="예약하기"> </p>
+                        <p><input type="submit" value="예약"> </p>
                         </form>
+                        <!-- 인풋했을때 중복 체크 -->
                     </div>
                 </div>
             </div> 

@@ -13,29 +13,26 @@
     $_POST['ground_num']=(int)$_POST['ground_num'];
     $_POST['reserve_start'] = (int)$_POST['reserve_start'];
     $_POST['reserve_end'] = (int)$_POST['reserve_end'];
-    var_dump($_POST);
-    echo "<br><h2>".$userindex."<br>".$user_id."</h2>";
+    // var_dump($_POST);
+    // echo "<br><h2>".$userindex."<br>".$user_id."</h2>";
 
     // 화면에 값을 출력하여 알아보기 위해
     $ground_num = $_POST['ground_num'];
     $reservation_date = $_POST['reserve_date'];
     $reservation_time = $_POST['reserve_start'];
     $reservation_end = $_POST['reserve_end'];
-    echo "<br><h2>".$ground_num."<br>".
-    $reservation_time."<br>".
-    $reservation_end."<br></h2>";
+    // echo "<br><h2>".$ground_num."<br>".
+    // $reservation_time."<br>".
+    // $reservation_end."<br></h2>";
 
-    while($reservation_time <= $reservation_end){
-        $sql = "INSERT INTO ground_index_reservations(ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created)
-        VALUES($ground_num, '$reservation_date', $reservation_time, 1, $userindex, now())";
-        $result = mysqli_query($conn, $sql);
+    // while($reservation_time <= $reservation_end){
+    //     $sql = "INSERT INTO ground_index_reservations(ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created)
+    //     VALUES($ground_num, '$reservation_date', $reservation_time, 1, $userindex, now())";
+    //     $result = mysqli_query($conn, $sql);
 
-        $reservation_time++;
-    }
-
+    //     $reservation_time++;
+    // }
     
-
-    echo "<p><a href='kickoff_groundIntro_01.php?groundid=1'>돌아가기</a></p>";
     
 ?> 
 <!DOCTYPE html>
@@ -47,6 +44,19 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+        <h1>이용시 주의사항</h1>
+        <?php
+        echo "<p><a href='kickoff_groundIntro_01.php?groundid=1'>돌아가기</a></p>";
+        ?>
+        <form action="kickoff_reserve_02.php" method="POST">
+            <input type="hidden" name="ground_num" value="<?=$ground_num?>">
+            <input type="hidden" name="reserve_date" value="<?=$reservation_date?>">
+            <input type="hidden" name="reserve_start" value="<?=$reservation_time?>">
+            <input type="hidden" name="reserve_end" value="<?=$reservation_end?>">
+            <input type="button" value="예약취소">
+            <input type="submit" value="예약하기">
+        </form>
+    </div>
 </body>
 </html>
