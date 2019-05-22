@@ -13,9 +13,6 @@ $conn = mysqli_connect("localhost","root","dlwoals12","kickoff");
 $sql = "SELECT*FROM ground_infomations WHERE ground_index = $num";
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result);
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -64,17 +61,25 @@ $row = mysqli_fetch_array($result);
             
             <div>
                 <h4>이용시간</h4>
+                <?php
+                    if($_POST['reserve_date']){
+                        $searchReseveDate = $_POST['reserve_date'];
+                    } else {
+                        $searchReseveDate = date("Y-m-d");
+                    }
+                    
+                ?>
                 <form action="kickoff_groundIntro_01.php?groundid=<?=$num?>" method="POST">
-                    <input type="date" name="reserve_date" id="reservated_date" value="2019-05-30">
+                    <input type="date" name="reserve_date" id="reservated_date" value="<?=$searchReseveDate?>">
                     <input type="submit">
                 </form>
                 <script>
                     //document.getElementById('reservated_date').value = new Date().toISOString().slice(0, 10);
-                    var reserved_date1 = document.getElementById('reservated_date').value;
-                    document.write(reserved_date1);
+                    //var reserved_date1 = document.getElementById('reservated_date').value;
                 </script>
                 
                 <h4>1구장</h4>
+                
                 <p><button id="S10">00:00</button><button id="S11">01:00</button><button id="S12">02:00</button><button id="S13">03:00</button><button>04:00</button><button>05:00</button><button>06:00</button><button>07:00</button></p>
                 <p><button>08:00</button><button>09:00</button><button>10:00</button><button>11:00</button><button>12:00</button><button>13:00</button><button>14:00</button><button>15:00</button></p>
                 <p><button>16:00</button><button>17:00</button><button>18:00</button><button>19:00</button><button>20:00</button><button>21:00</button><button>22:00</button><button>23:00</button></p>
@@ -98,7 +103,7 @@ $row = mysqli_fetch_array($result);
                 <?php
                 //예약정보를 알아오는 부분
                 // 날짜를 받아온 로우들 중에서
-                if($_POST){
+                if($_POST['reserve_date']){
                     $reserve_data = $_POST['reserve_date'];
                     $sql_reserve = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$reserve_data'";
                     $result_reserve = mysqli_query($conn, $sql_reserve);
@@ -112,9 +117,8 @@ $row = mysqli_fetch_array($result);
                         }
                     }
                 } else {
-                    $temp_reserve_data = "<script>document.write(reserved_date1);</script>";
-                    echo $temp_reserve_data;
-                    $sql_reserve = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$temp_reserve_data'";
+                    $reserve_data = $searchReseveDate;
+                    $sql_reserve = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$reserve_data'";
                     $result_reserve = mysqli_query($conn, $sql_reserve);
                     $day_reserve_ground = array();
                     $day_reserve_time = array();

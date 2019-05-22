@@ -74,27 +74,23 @@ session_start();
                     <div class="StartTime">
                         <p class="mainsearchTitle">시작시간</p>
                         <select class="SearchInput">
-                            <option>00:00</option>
-                            <option>01:00</option>
-                            <option>02:00</option>
-                            <option>03:00</option>
-                            <option>04:00</option>
-                            <option>05:00</option>
-                            <option>06:00</option>
-                            <option>07:00</option>
+                            <script>
+                                startTime = "";
+                                for(i=0;i<24;i++){
+                                    document.write("<option>"+i+":00"+"</option>");
+                                }
+                            </script>
                         </select>
                     </div>
                     <div class="EndTime">
                         <p class="mainsearchTitle">종료시간</p>
                         <select class="SearchInput">
-                            <option>00:59</option>
-                            <option>01:59</option>
-                            <option>02:59</option>
-                            <option>03:59</option>
-                            <option>04:59</option>
-                            <option>05:59</option>
-                            <option>06:59</option>
-                            <option>07:59</option>
+                            <script>
+                                startTime = "";
+                                for(i=0;i<24;i++){
+                                    document.write("<option>"+i+1+":00"+"</option>");
+                                }
+                            </script>
                         </select>
                     </div>
                     <div class="Search">
