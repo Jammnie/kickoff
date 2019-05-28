@@ -14,27 +14,35 @@
     $_POST['reserve_start'] = (int)$_POST['reserve_start'];
     $_POST['reserve_end'] = (int)$_POST['reserve_end'];
     // var_dump($_POST);
-    // echo "<br><h2>".$userindex."<br>".$user_id."</h2>";
+    // echo "<br><h2>".$userindex."<br>".$user_id."</h2>";    
 
     // 화면에 값을 출력하여 알아보기 위해
     $ground_num = $_POST['ground_num'];
     $reservation_date = $_POST['reserve_date'];
     $reservation_time = $_POST['reserve_start'];
     $reservation_end = $_POST['reserve_end'];
-    // echo "<br><h2>".$ground_num."<br>".
-    // $reservation_time."<br>".
-    // $reservation_end."<br></h2>";
-
-    // while($reservation_time <= $reservation_end){
-    //     $sql = "INSERT INTO ground_index_reservations(ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created)
-    //     VALUES($ground_num, '$reservation_date', $reservation_time, 1, $userindex, now())";
-    //     $result = mysqli_query($conn, $sql);
-
-    //     $reservation_time++;
-    // }
-    
-    
+    // 예약상황이 중복되었는지 확인
+    // DB에 같은 구장 같은 날짜 같은 시간에 예약이 되어있다면
+    // 중복메시지를 출력, DB에 저장하지 않는다.
+    $sql = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = $reservation_date";
+    $reserved = mysqli_query($conn,$sql);
+    $row_reserved_check = mysqli_fetch_array($reserved);
+    while($row_reserved_check){
+        if($row_reserved_check['ground_num'] = $ground_num ){
+            for($i=$reservation_time;$i <= $reservation_end;$i++){
+                if($i=$row_reserved_check['ground_reservation_time']){
+                    echo "<script>goback();</script>";
+                    break;
+                }
+            }
+        }
+    }
 ?> 
+<script>
+    function goback(){
+        window.history.back();
+    }
+    </script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +53,9 @@
 </head>
 <body>
     <div>
+        <h2></h2>
         <h1>이용시 주의사항</h1>
+
         <?php
         echo "<p><a href='kickoff_groundIntro_01.php?groundid=1'>돌아가기</a></p>";
         ?>

@@ -1,0 +1,28 @@
+.signin_input{
+    height:48px;
+    width: 600px;
+}
+.login_btn{
+    width: 320px;
+    height: 64px;
+    background-color: #195384;
+    color : #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid #707070;
+}
+
+.login_btn:hover{
+    background-color:#1D69AA;
+}
+
+
+.signin_selecter{
+    display: inline-block;
+    position: relative;
+    width: 360x;
+    height: 280px;
+    background-color: #707070;
+}
+

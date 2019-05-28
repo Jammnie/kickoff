@@ -25,6 +25,8 @@
     $reservation_time."<br>".
     $reservation_end."<br></h2>";
 
+    
+    // while 문은 사용하여 DB에 예약상황 저장
     while($reservation_time <= $reservation_end){
         $sql = "INSERT INTO ground_index_reservations(ground_num, ground_reservation_date, ground_reservation_time, ground_reservation_stat, ground_reservation_user_index, ground_reservation_created)
         VALUES($ground_num, '$reservation_date', $reservation_time, 1, $userindex, now())";
@@ -32,7 +34,7 @@
         $reservation_time++;
     }
     
-    
+    //
 ?> 
 <!DOCTYPE html>
 <html lang="en">

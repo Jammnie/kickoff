@@ -8,22 +8,17 @@ session_start();
  } else { 
     $login_stat = '로그인';
  }
-
- $groundNum = 1;
- 
- $sql = "SELECT*FROM ground_infomations WHERE ground_index = $groundNum";
- $result = mysqli_query($conn,$sql);
- $row = mysqli_fetch_array($result);
 ?>
+
 <!DOCTYPE html PUBLIC>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Kickoff</title>
-<link href="css\kickoff_css.css" rel="stylesheet" type="text/css">
-<link href="css\kickoff_landing.css" rel="stylesheet" type="text/css">
-<script src="js/prefixfree.min.js"></script>
-<script src="js/jquery.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Kickoff</title>
+    <link href="css\kickoff_css.css" rel="stylesheet" type="text/css">
+    <link href="css\kickoff_landing.css" rel="stylesheet" type="text/css">
+    <script src="js/prefixfree.min.js"></script>
+    <script src="js/jquery.js"></script>
 </head>
 <body>
     <header class="header">
@@ -130,6 +125,13 @@ session_start();
                         <h2>가장가까운 구장을 만나보세요.</h2>
                         <P>가까운 구장의 평균 점수는 4.5개입니다.</P>
                     </div>
+                    <?php
+                    $groundNum = 1;
+ 
+                    $sql = "SELECT*FROM ground_infomations WHERE ground_index = $groundNum";
+                    $result = mysqli_query($conn,$sql);
+                    $row = mysqli_fetch_array($result);
+                    ?>
                     <div class="SearchContent">
                         <section class="CourtView" >
                             <a href="kickoff_groundIntro_01.php?groundid=<?=$groundNum?>">

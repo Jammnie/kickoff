@@ -64,6 +64,7 @@ $row = mysqli_fetch_array($result);
                 <?php
                     if($_POST['reserve_date']){
                         $searchReseveDate = $_POST['reserve_date'];
+
                     } else {
                         $searchReseveDate = date("Y-m-d");
                     }
@@ -79,7 +80,7 @@ $row = mysqli_fetch_array($result);
                 </script>
                 
                 <h4>1구장</h4>
-                
+
                 <p><button id="S10">00:00</button><button id="S11">01:00</button><button id="S12">02:00</button><button id="S13">03:00</button><button>04:00</button><button>05:00</button><button>06:00</button><button>07:00</button></p>
                 <p><button>08:00</button><button>09:00</button><button>10:00</button><button>11:00</button><button>12:00</button><button>13:00</button><button>14:00</button><button>15:00</button></p>
                 <p><button>16:00</button><button>17:00</button><button>18:00</button><button>19:00</button><button>20:00</button><button>21:00</button><button>22:00</button><button>23:00</button></p>
@@ -165,15 +166,16 @@ $row = mysqli_fetch_array($result);
                     <h2>예약하기</h2>
                     <div>
                         <form action="kickoff_reserve_01.php" method="POST">
+
+                        <p>이용날짜<p>
+                        <p><input type="date" class="reseve_inputset" name="reserve_date" id="reserve_date" value="<?=$searchReseveDate?>"></p>
+
                         <p>이용구장<p>
                         <p><select class="reseve_inputset" name="ground_num">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select></p>
-
-                        <p>이용날짜<p>
-                        <p><input type="date" class="reseve_inputset" name="reserve_date" id="reserve_date"></p>
 
                         <p>이용시간</p>
                         <p>
