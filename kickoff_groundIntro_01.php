@@ -68,7 +68,6 @@ $row = mysqli_fetch_array($result);
                     } else {
                         $searchReseveDate = date("Y-m-d");
                     }
-                    
                 ?>
                 <form action="kickoff_groundIntro_01.php?groundid=<?=$num?>" method="POST">
                     <input type="date" name="reserve_date" id="reservated_date" value="<?=$searchReseveDate?>">
@@ -166,35 +165,79 @@ $row = mysqli_fetch_array($result);
                     <h2>예약하기</h2>
                     <div>
                         <form action="kickoff_reserve_01.php" method="POST">
+                        <script>
+                            function reseve_activate() {
+                                document.getElementById("reserve_start").disabled = false;
+                                document.getElementById("reserve_end").disabled = false;
+
+                            }
+                        </script>
 
                         <p>이용날짜<p>
                         <p><input type="date" class="reseve_inputset" name="reserve_date" id="reserve_date" value="<?=$searchReseveDate?>"></p>
 
                         <p>이용구장<p>
-                        <p><select class="reseve_inputset" name="ground_num">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <p><select class="reseve_inputset" name="ground_num" id="ground_num" onchange="reseve_activate()">
+                            <option value="null" selected>구장 번호 선택</option>
+                            <?php
+                                $sql_groundNum = "SELECT*FROM ground_infomations WHERE ground_index = $num";
+                                $result_groundNum = mysqli_query($conn, $sql_groundNum);
+                                $groundNumCount = mysqli_fetch_array($result_groundNum);
+                                //$groundNumCount = mysql
+                                for($i=1;$i<=$groundNumCount['ground_groundNum'];$i++){
+                                    echo '<option value="'.$i.'">'.$i.'</option>';
+                                }
+                            ?>
                         </select></p>
 
                         <p>이용시간</p>
                         <p>
-                            <select class="reseve_inputset" name="reserve_start">
-                                <option value="0">00:00</option>
-                                <option value="1">01:00</option>
-                                <option value="2">02:00</option>
-                                <option value="3">03:00</option>
-                                <option value="4">04:00</option>
+                            <select class="reseve_inputset" name="reserve_start" id="reserve_start" disabled="true">
+                                <?php
+                                // 0시에서 23시까지 시간을 표시해서 option으로 출력해준다.
+                                $reserve_time_option = '';
+                                for($i=0;$i<24;$i++){
+                                    $time = $i.':00';
+                                    $reserve_time_option = '<option value="'.$i.'" id="reserveTime_'.$i.'">'.$time.'</option>';
+                                    echo "$reserve_time_option";
+                                }
+                                // 예약상황을 DB에서 읽어온다. 예약이 된 시간은 Disable처리한다.
+
+                                $sql_groundTime_disabled = "SELECT*FROM ground_index_reservations WHERE ground_reservation_date = '$reservation_date'";
+                                $sql_groundTime_disabled_query = mysqli_query($conn, $sql_groundTime_disabled);
+                                while($sql_groundTime_disabled_result = mysqli_fetch_array($sql_groundTime_disabled_query)){
+                                   $groundNumCheck = $sql_groundTime_disabled_result['ground_num'];
+                                   $groundTimeCheck = $sql_groundTime_disabled_result['ground_reservation_time'];
+                                   echo "<script type='text/javascript'> groundReserveTime_disabled(".$groundNumCheck.",".$groundTimeCheck.")</script>";
+                                }
+                                ?>
+                                
+                                <script>
+                                    function groundReserveTime_disabled(groundNum, reserveTime){
+                                        groundNum_Check = document.getElementById(ground_num).value;
+                                        if(groundNum = groundNum_Check){
+                                            document.getElementById("reserveTime_"+reserveTime).disabled = true;
+                                            document.getElementById("reserveTime_"+reserveTime).color = red;
+                                        }
+                                    }
+                                </script>
                             </select>
                              ~
-                            <select class="reseve_inputset" name="reserve_end">
-                                <option value="0">00:59</option>
-                                <option value="1">01:59</option>
-                                <option value="2">02:59</option>
-                                <option value="3">03:59</option>
-                                <option value="4">04:59</option>
+                            <select class="reseve_inputset" name="reserve_end" id="reserve_end" disabled="true">
+                                <?php
+                                $reserve_time_option = '';
+                                for($i=0;$i<24;$i++){
+                                    $time = $i.':59';
+                                    $reserve_time_option = '<option value="'.$i.'">'.$time.'</option>';
+                                    echo "$reserve_time_option";
+                                }
+                                ?>
                             </select>
                         </p>
+                        <p><select>
+                            <option>1</option>
+                            <option disabled>2</option>
+                        </select></p>
                         <p><input type="submit" value="예약"> </p>
                         </form>
                         <!-- 인풋했을때 중복 체크 -->
